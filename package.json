@@ -1,0 +1,29 @@
+{
+  "name": "say-it",
+  "version": "0.1.0",
+  "description": "Read the text you typed in command line by using Baidu tts.",
+  "main": "say-it.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/wahyd4/say-it.git"
+  },
+  "keywords": [
+    "tts",
+    "command"
+  ],
+  "author": "Junv",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wahyd4/say-it/issues"
+  },
+  "homepage": "https://github.com/wahyd4/say-it#readme",
+  "dependencies": {
+    "async": "^2.4.1",
+    "chalk": "^1.1.3",
+    "commander": "^2.9.0",
+    "inquirer": "^3.0.6"
+  }
+}
