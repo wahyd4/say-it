@@ -15,7 +15,7 @@ It just like the `say` command in Mac OSX, but born to be much powerful. We use
   `say-it "Life is like riding a bicycle. To keep your balance, you must keep moving. ― Albert Einstein"`
 
 ## Language support limit
-  Due the Baidu Yuyin's limit, right now we only support Chinses and English.
+  Due to Baidu Yuyin's limit, right now we only support Chinses and English.
 
 ## Updates
 
