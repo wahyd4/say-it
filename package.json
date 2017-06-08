@@ -1,6 +1,6 @@
 {
   "name": "say-it",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Read the text you typed in command line by using Baidu tts.",
   "main": "say-it.js",
   "bin": {
