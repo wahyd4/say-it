@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const chalk = require('chalk')
 const program = require('commander')
 const request = require('request')
@@ -5,7 +7,7 @@ const fs = require('fs')
 const URL = require('url').URL
 const player = require('play-sound')(opts = { players: ['afplay', 'mplayer', 'play'] })
 const charm = require('charm')()
-const { TEXT_ERROR, LOADING }  = require('./texts')
+const { TEXT_ERROR, LOADING } = require('./texts')
 
 const showError = (error = TEXT_ERROR) => {
   console.log(chalk.red(error))
@@ -50,9 +52,12 @@ function sayIt(text) {
     .pipe(fs.createWriteStream('say-it.mp3'))
     .on('finish', () => {
       player.play('say-it.mp3', function (err) {
-        showError(err)
+        if (!!err) {
+          showError(err)
+        }
       })
-      charm.erase('start')
+      charm.erase('line')
       charm.left(LOADING.length)
+      charm.destroy()
     })
 }

@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Read the text you typed in command line by using Baidu tts.",
   "main": "say-it.js",
+  "bin": {
+    "say-it": "./say-it.js"
+  },
   "scripts": {
     "test": "test"
   },
