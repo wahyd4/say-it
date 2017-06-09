@@ -28,6 +28,7 @@
     "charm": "^1.0.2",
     "commander": "^2.9.0",
     "inquirer": "^3.0.6",
+    "lodash": "^4.17.4",
     "play-sound": "^1.1.1",
     "request": "^2.81.0"
   }
