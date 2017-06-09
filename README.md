@@ -1,6 +1,6 @@
 # say-it
 
-It just like the `say` command in Mac OSX, but born to be much powerful. We used [Baidu Yuyin](http://yuyin.baidu.com/) as the TTS engine. You need to have network access to use this tool. The pronunciation of Chinese is much better than English.
+It just like the `say` command in Mac OSX, but born to be much powerful. We used [Baidu Yuyin](http://yuyin.baidu.com/) as the TTS engine. You need to have network access to use this tool. The pronunciation of Chinese is much better than English. Generally this could be a tool to help you to learn Chinese or English.
 
 ## Install
 
@@ -10,9 +10,9 @@ It just like the `say` command in Mac OSX, but born to be much powerful. We used
 
   `say-it 'Hello 世界'`
 
-  `say-it '春晓 孟浩然  春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。'`
+  `say-it -p 3 '春晓 孟浩然  春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。'`
 
-  `say-it "Life is like riding a bicycle. To keep your balance, you must keep moving. ― Albert Einstein"`
+  `say-it -p 4 "Life is like riding a bicycle. To keep your balance, you must keep moving. ― Albert Einstein"`
 
 
 ## Language support limit
@@ -35,6 +35,7 @@ It just like the `say` command in Mac OSX, but born to be much powerful. We used
 ## Updates
 
   * 0.1.0 Add basic function to read texts from command line.
+  * 0.1.3 Add ability to allow user set different voice.
 
 ## License
 
