@@ -24,7 +24,7 @@ charm.pipe(process.stdout);
 updateNotifier({pkg}).notify(); //show npm package update if available
 
 program
-  .version('0.1')
+  .version('0.1.6')
   .command(' ', 'read the texts you typed in', {
     isDefault: true
   })
