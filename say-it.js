@@ -10,6 +10,8 @@ const player = require('play-sound')(opts = {
 const charm = require('charm')()
 const TEXTS = require('./texts')
 const _ = require('lodash')
+const updateNotifier = require('update-notifier');
+const pkg = require('./package.json');
 
 const showError = (error = TEXTS.error) => {
   console.log(chalk.red(error))
@@ -18,6 +20,8 @@ const showError = (error = TEXTS.error) => {
 var person = 0
 
 charm.pipe(process.stdout);
+
+updateNotifier({pkg}).notify(); //show npm package update if available
 
 program
   .version('0.1')

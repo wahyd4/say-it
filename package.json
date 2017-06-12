@@ -1,6 +1,6 @@
 {
   "name": "say-it",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Read the text you typed in command line by using Baidu tts.",
   "main": "say-it.js",
   "bin": {
@@ -30,6 +30,7 @@
     "inquirer": "^3.0.6",
     "lodash": "^4.17.4",
     "play-sound": "^1.1.1",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "update-notifier": "^2.2.0"
   }
 }
