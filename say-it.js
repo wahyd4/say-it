@@ -20,7 +20,7 @@ var person = 0
 charm.pipe(process.stdout);
 
 program
-  .version('0.0.1')
+  .version('0.1')
   .command(' ', 'read the texts you typed in', {
     isDefault: true
   })
@@ -31,7 +31,8 @@ program.on('*', () => {
   if (!text || text.trim() === '') {
     return showError()
   }
-  if (!_.includes([0, 1, 2, 3, 4], Number.parseInt(program.person))) {
+
+  if (!!program.person && !_.includes([0, 1, 2, 3, 4], Number.parseInt(program.person))) {
     return showError(TEXTS.invalidPerson)
   }
   person = Number.parseInt(program.person)
