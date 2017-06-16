@@ -22,7 +22,7 @@ It just like the `say` command in Mac OSX, but born to be much powerful. We used
 
 ## Compatibility
 
-  This is package is test against with `macOS Sierra`, but it should be worked on most Mac platforms. For `Linux` and `Windows` users, please make sure you have at least one of the players installed from the list.
+  This is package is developed and tested against under `macOS Sierra`, but it should be worked on all Mac platforms if you can install the latest stable version of Node. For `Linux` and `Windows` users, please make sure you have at least one of the players installed from the list.
 
   * [`mplayer`](https://www.mplayerhq.hu/)
   * [`afplay`](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/afplay.1.html)
