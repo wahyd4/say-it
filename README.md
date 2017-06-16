@@ -38,7 +38,7 @@ It just like the `say` command in Mac OSX, but born to be much powerful. We used
 
   * 0.1.0 Add basic function to read texts from command line.
   * 0.1.3 Add ability to allow user set different voice.
-
+  * 0.1.7 Allow user to set voice speed and pitch.
 ## License
 
   MIT
