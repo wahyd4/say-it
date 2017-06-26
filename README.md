@@ -1,12 +1,10 @@
 # say-it
 
-[![NPM](https://nodei.co/npm/say-it.png)](https://npmjs.org/package/say-it)
-
 It just like the `say` command in Mac OSX, but born to be much powerful. We used [Baidu Yuyin](http://yuyin.baidu.com/) as the TTS engine. You need to have network access to use this tool. The pronunciation of Chinese is much better than English. Generally this could be a tool to help you to learn Chinese or English.
 
 ## Install
 
-    npm install -g say-it
+
 
 ## How to use
 
