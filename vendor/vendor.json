@@ -3,10 +3,22 @@
 	"ignore": "test",
 	"package": [
 		{
+			"checksumSHA1": "VYvyVPooYXiO6gqwCGkPPK5vCzk=",
+			"path": "github.com/Sirupsen/logrus",
+			"revision": "3d4380f53a34dcdc95f0c1db702615992b38d9a4",
+			"revisionTime": "2017-06-20T14:45:10Z"
+		},
+		{
 			"checksumSHA1": "ToTZYDqlvtuFsetAq5FeCwUxp0E=",
 			"path": "github.com/urfave/cli",
 			"revision": "d86a009f5e13f83df65d0d6cee9a2e3f1445f0da",
 			"revisionTime": "2016-11-02T13:18:01Z"
+		},
+		{
+			"checksumSHA1": "aVgPDgwY3/t4J/JOw9H3FVMHqh0=",
+			"path": "golang.org/x/sys/unix",
+			"revision": "c200b10b5d5e122be351b67af224adc6128af5bf",
+			"revisionTime": "2016-10-22T18:22:21Z"
 		}
 	],
 	"rootPath": "github.com/wahyd4/say-it"

@@ -4,6 +4,7 @@ It just like the `say` command in Mac OSX, but born to be much powerful. We used
 
 ## Install
 
+  go get -u github.com/wahyd4/say-it
 
 
 ## How to use

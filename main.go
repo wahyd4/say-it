@@ -16,6 +16,7 @@ import (
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/urfave/cli"
+	t "github.com/wahyd4/say-it/token"
 	"github.com/wahyd4/say-it/utils"
 )
 
@@ -27,8 +28,20 @@ var (
 	person int
 	speed  int
 	pitch  int
-	token  string = "24.85efc4bbd8b8315255dcb59cd82e1ac4.2592000.1501048297.282335-9739014"
+	token  *t.Token
 )
+
+func init() {
+	//try to load token
+	//if no token, then fetch
+	//fetch token and write token
+	token = t.LoadToken()
+	if !t.TokenValid(token) {
+		log.Info("No valid token found or token expires, will try to fetch one")
+		token = t.FetchToken()
+		t.WriteToFile(token)
+	}
+}
 
 func main() {
 
@@ -47,10 +60,8 @@ func main() {
 			log.Fatal("Please type the correct option values and retry : " + err.Error())
 		}
 		fetchVoiceAndSpeak(words)
-		fmt.Println(person, speed, pitch)
 		return nil
 	}
-
 	app.Run(os.Args)
 }
 
@@ -128,7 +139,7 @@ func buildURL(text string) *url.URL {
 	queries.Add("lan", "zh")
 	queries.Add("cuid", strconv.FormatInt(time.Now().Unix(), 10))
 	queries.Add("ctp", "1")
-	queries.Add("tok", token)
+	queries.Add("tok", token.Value)
 	queries.Add("per", strconv.Itoa(person))
 	queries.Add("spd", strconv.Itoa(speed))
 	queries.Add("pit", strconv.Itoa(pitch))
