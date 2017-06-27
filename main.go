@@ -21,7 +21,7 @@ import (
 )
 
 const (
-	Mp3FileName = "say-it.mp3"
+	Mp3FileName = "/tmp/say-it.mp3"
 )
 
 var (
@@ -113,7 +113,7 @@ func fetchVoiceAndSpeak(text string) {
 	// fmt.Println(response.StatusCode)
 
 	defer response.Body.Close()
-	out, err := os.Create(Mp3FileName)
+	out, err := os.Create(utils.HomeDir() + Mp3FileName)
 	if err != nil {
 		log.Fatal("Create file failed:" + err.Error())
 	}
@@ -124,7 +124,7 @@ func fetchVoiceAndSpeak(text string) {
 }
 
 func speak() {
-	command := exec.Command("afplay", Mp3FileName)
+	command := exec.Command("afplay", utils.HomeDir()+Mp3FileName)
 	if err := command.Run(); err != nil {
 		log.Error("Failed to say the words: " + err.Error())
 	}
