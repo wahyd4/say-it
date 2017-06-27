@@ -12,8 +12,11 @@ import (
 	"net/http"
 	"net/url"
 
+	"errors"
+
 	log "github.com/Sirupsen/logrus"
 	"github.com/urfave/cli"
+	"github.com/wahyd4/say-it/utils"
 )
 
 const (
@@ -40,6 +43,9 @@ func main() {
 			return nil
 		}
 		words := c.Args().Get(0)
+		if err := inputCheck(); err != nil {
+			log.Fatal("Please type the correct option values and retry : " + err.Error())
+		}
 		fetchVoiceAndSpeak(words)
 		fmt.Println(person, speed, pitch)
 		return nil
@@ -69,6 +75,21 @@ func setFlags(app *cli.App) {
 			Usage:       "set the voice pitch. 0 - 9",
 		},
 	}
+}
+
+func inputCheck() error {
+	if !utils.Contains(person, []int{0, 1, 2, 3, 4}) {
+		return errors.New("Person value is not valid")
+	}
+
+	if !utils.Contains(speed, []int{1, 2, 3, 4, 5, 6, 7, 8, 9}) {
+		return errors.New("Speed value is not valid")
+	}
+
+	if !utils.Contains(pitch, []int{1, 2, 3, 4, 5, 6, 7, 8, 9}) {
+		return errors.New("Pitch value is not valid")
+	}
+	return nil
 }
 
 func fetchVoiceAndSpeak(text string) {
