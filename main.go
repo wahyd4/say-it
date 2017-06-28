@@ -16,6 +16,8 @@ import (
 
 	"errors"
 
+	"runtime"
+
 	log "github.com/Sirupsen/logrus"
 	"github.com/urfave/cli"
 	t "github.com/wahyd4/say-it/token"
@@ -23,7 +25,8 @@ import (
 )
 
 const (
-	Mp3FileName = "/tmp/say-it.mp3"
+	MP3FileName        = "/tmp/say-it.mp3"
+	WindowsMP3FileName = "say-it.mp3"
 )
 
 var (
@@ -39,7 +42,11 @@ type ErrorResponse struct {
 }
 
 func init() {
-	log.SetLevel(log.WarnLevel) //default with error level
+	if runtime.GOOS != "darwin" && runtime.GOOS != "windows" {
+		log.Fatal("Sorry, currently we don't support OS: " + runtime.GOOS)
+	}
+
+	log.SetLevel(log.WarnLevel)
 	//try to load token
 	//if no token, then fetch and write to local
 	token = t.LoadToken()
@@ -138,7 +145,7 @@ Fetch:
 		log.Fatalf("Get voice failed, error code is: %d, error message is %s", errorResp.Code, errorResp.Message)
 	}
 
-	out, err := os.Create(utils.HomeDir() + Mp3FileName)
+	out, err := os.Create(getAudioFilePath())
 	if err != nil {
 		log.Fatal("Create file failed:" + err.Error())
 	}
@@ -149,10 +156,18 @@ Fetch:
 }
 
 func speak() {
-	command := exec.Command("afplay", utils.HomeDir()+Mp3FileName)
+	if runtime.GOOS == "darwin" {
+		command := exec.Command("afplay", getAudioFilePath())
+		if err := command.Run(); err != nil {
+			log.Error("Failed to say the words: " + err.Error())
+		}
+		return
+	}
+	command := exec.Command("./cmdmp3.exe", getAudioFilePath())
 	if err := command.Run(); err != nil {
 		log.Error("Failed to say the words: " + err.Error())
 	}
+
 }
 
 func buildURL(text string) *url.URL {
@@ -170,4 +185,11 @@ func buildURL(text string) *url.URL {
 	queries.Add("pit", strconv.Itoa(pitch))
 	urlObject.RawQuery = queries.Encode()
 	return urlObject
+}
+
+func getAudioFilePath() string {
+	if runtime.GOOS == "darwin" {
+		return utils.HomeDir() + MP3FileName
+	}
+	return utils.HomeDir() + WindowsMP3FileName
 }
