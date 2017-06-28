@@ -39,6 +39,7 @@ type ErrorResponse struct {
 }
 
 func init() {
+	log.SetLevel(log.WarnLevel) //default with error level
 	//try to load token
 	//if no token, then fetch and write to local
 	token = t.LoadToken()
@@ -50,15 +51,14 @@ func init() {
 }
 
 func main() {
-
 	app := cli.NewApp()
 	app.Name = "say-it"
-	app.Usage = "TTS in command line -- Pronounce the Chinese or English words you typed in."
+	app.Usage = "TTS in command line -- Pronounce the Chinese and English words you typed in."
 	app.Version = "0.2.0"
 	setFlags(app)
 	app.Action = func(c *cli.Context) error {
 		if len(c.Args()) == 0 {
-			fmt.Println("Please type some words. e.g: say-it '你好, 世界'")
+			fmt.Println("Please type some words. e.g. say-it '你好, 世界'")
 			return nil
 		}
 		words := c.Args().Get(0)
@@ -115,7 +115,8 @@ Fetch:
 	response, err := http.Get(urlObject.String())
 
 	if err != nil {
-		log.Error("Fetch voice failed:" + err.Error())
+		log.Fatal("Fetch voice failed:" + err.Error())
+		return
 	}
 
 	defer response.Body.Close()
@@ -129,7 +130,7 @@ Fetch:
 		json.Unmarshal(bodyString, &errorResp)
 
 		if errorResp.Code == 502 {
-			log.Warn("Code is not valid, trying to fetch a new one")
+			log.Warn("Access code is not valid, trying to fetch a new one")
 			token = t.FetchToken()
 			t.WriteToFile(token)
 			goto Fetch
