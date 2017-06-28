@@ -7,7 +7,7 @@ It just like the `say` command in Mac OSX, but born to be much powerful. We used
 
       go get -u github.com/wahyd4/say-it
 
-2. The standalone way, please go to releases page to download the binary application then execute it
+2. Or the standalone way, please go to releases page to download the binary application then execute it
 
 ## How to use
 
@@ -33,6 +33,12 @@ It just like the `say` command in Mac OSX, but born to be much powerful. We used
   * [`afplay`](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/afplay.1.html)
   * [`cmdmp3`](https://github.com/jimlawless/cmdmp3)
 
+## How to Add cmdmp3 into PATH (Only for windows user)
+1. Download the binary from: <http://www.mailsend-online.com/wp/cmdmp3new.zip>
+2. Extract it to a folder. e.g. `c:/cmdmp3`
+3. Go to the Advanced system setting page, and modify the `PATH` environment variable by adding `;c:/cmdmp3` to the end.
+4. Restart windows and go to command line and test `cmdmp3`, if there is some outputs contains `cmdmp3 v2.0`. Congratualtions, all done!
+5. If you install `say-it` by downloading the binary, then you can make the `say-it` to be globally executable just do some works like this.
 
 ## Updates
 
