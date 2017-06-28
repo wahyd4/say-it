@@ -26,7 +26,7 @@ import (
 
 const (
 	MP3FileName        = "/tmp/say-it.mp3"
-	WindowsMP3FileName = "say-it.mp3"
+	WindowsMP3FileName = "/say-it.mp3"
 )
 
 var (
