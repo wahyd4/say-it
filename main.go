@@ -26,7 +26,7 @@ import (
 
 const (
 	MP3FileName        = "/tmp/say-it.mp3"
-	WindowsMP3FileName = "/say-it.mp3"
+	WindowsMP3FileName = "\\say-it.mp3"
 )
 
 var (
@@ -191,5 +191,6 @@ func getAudioFilePath() string {
 	if runtime.GOOS == "darwin" {
 		return utils.HomeDir() + MP3FileName
 	}
+	fmt.Println(utils.HomeDir() + WindowsMP3FileName)
 	return utils.HomeDir() + WindowsMP3FileName
 }
