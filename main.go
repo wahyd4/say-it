@@ -164,7 +164,8 @@ func speak() {
 		return
 	}
 	command := exec.Command("cmdmp3", getAudioFilePath())
-	fmt.Println(command.Output())
+	out, _ := command.Output()
+	log.Error(string(out))
 	command.Start()
 	// if err := command.Run(); err != nil {
 	// 	log.Error("Failed to say the words: " + err.Error())
