@@ -1,8 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"os"
 	"os/exec"
 	"strconv"
@@ -31,10 +33,14 @@ var (
 	token  *t.Token
 )
 
+type ErrorResponse struct {
+	Message string `json:"err_msg"`
+	Code    int    `json:"err_no"`
+}
+
 func init() {
 	//try to load token
-	//if no token, then fetch
-	//fetch token and write token
+	//if no token, then fetch and write to local
 	token = t.LoadToken()
 	if !t.TokenValid(token) {
 		log.Info("No valid token found or token expires, will try to fetch one")
@@ -104,15 +110,33 @@ func inputCheck() error {
 }
 
 func fetchVoiceAndSpeak(text string) {
+Fetch:
 	urlObject := buildURL(text)
 	response, err := http.Get(urlObject.String())
 
 	if err != nil {
 		log.Error("Fetch voice failed:" + err.Error())
 	}
-	// fmt.Println(response.StatusCode)
 
 	defer response.Body.Close()
+	if utils.CheckContentType(response.Header["Content-Type"], "application/json") {
+
+		bodyString, err := ioutil.ReadAll(response.Body)
+		if err != nil {
+			log.Error(err.Error())
+		}
+		var errorResp ErrorResponse
+		json.Unmarshal(bodyString, &errorResp)
+
+		if errorResp.Code == 502 {
+			log.Warn("Code is not valid, trying to fetch a new one")
+			token = t.FetchToken()
+			t.WriteToFile(token)
+			goto Fetch
+		}
+		log.Fatalf("Get voice failed, error code is: %d, error message is %s", errorResp.Code, errorResp.Message)
+	}
+
 	out, err := os.Create(utils.HomeDir() + Mp3FileName)
 	if err != nil {
 		log.Fatal("Create file failed:" + err.Error())

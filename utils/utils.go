@@ -13,3 +13,12 @@ func HomeDir() string {
 	}
 	return usr.HomeDir
 }
+
+func CheckContentType(contentTypes []string, target string) bool {
+	for _, item := range contentTypes {
+		if item == target {
+			return true
+		}
+	}
+	return false
+}
