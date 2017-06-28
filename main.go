@@ -61,11 +61,11 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "say-it"
 	app.Usage = "TTS in command line -- Pronounce the Chinese and English words you typed in."
-	app.Version = "0.2.0"
+	app.Version = "0.3.0"
 	setFlags(app)
 	app.Action = func(c *cli.Context) error {
 		if len(c.Args()) == 0 {
-			fmt.Println("Please type some words. e.g. say-it '你好, 世界'")
+			fmt.Println("Please type some words. e.g. say-it \"你好, 世界\"")
 			return nil
 		}
 		words := c.Args().Get(0)
@@ -163,7 +163,7 @@ func speak() {
 		}
 		return
 	}
-	command := exec.Command("cmdmp3.exe", getAudioFilePath())
+	command := exec.Command("cmdmp3", getAudioFilePath())
 
 	if err := command.Run(); err != nil {
 		log.Error("Failed to say the words: " + err.Error())
@@ -192,6 +192,5 @@ func getAudioFilePath() string {
 	if runtime.GOOS == "darwin" {
 		return utils.HomeDir() + MP3FileName
 	}
-	fmt.Println(utils.HomeDir() + WindowsMP3FileName)
 	return utils.HomeDir() + WindowsMP3FileName
 }
