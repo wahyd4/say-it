@@ -149,9 +149,9 @@ Fetch:
 	if err != nil {
 		log.Fatal("Create file failed:" + err.Error())
 	}
-	defer out.Close()
-	io.Copy(out, response.Body)
 
+	io.Copy(out, response.Body)
+	out.Close()
 	speak()
 }
 
@@ -163,13 +163,11 @@ func speak() {
 		}
 		return
 	}
-	command := exec.Command("cmdmp3", getAudioFilePath())
-	out, _ := command.Output()
-	log.Error(string(out))
-	command.Start()
-	// if err := command.Run(); err != nil {
-	// 	log.Error("Failed to say the words: " + err.Error())
-	// }
+	command := exec.Command("cmdmp3.exe", getAudioFilePath())
+
+	if err := command.Run(); err != nil {
+		log.Error("Failed to say the words: " + err.Error())
+	}
 
 }
 
