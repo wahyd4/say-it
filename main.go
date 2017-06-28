@@ -163,7 +163,8 @@ func speak() {
 		}
 		return
 	}
-	command := exec.Command("cmdmp3.exe", getAudioFilePath())
+	command := exec.Command(getAudioFilePath())
+	// command := exec.Command("cmdmp3.exe", getAudioFilePath())
 	if err := command.Run(); err != nil {
 		log.Error("Failed to say the words: " + err.Error())
 	}
