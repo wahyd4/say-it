@@ -1,3 +1,9 @@
+# Notice
+
+    say-it has been moved to Golang platform. Please install it by `go get github.com/wahyd4/say-it`
+
+    For more details, please check at <https://github.com/wahyd4/say-it>
+
 # say-it
 
 [![NPM](https://nodei.co/npm/say-it.png)](https://npmjs.org/package/say-it)
