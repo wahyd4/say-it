@@ -1,5 +1,18 @@
 # say-it
 
+<!-- TOC -->
+
+- [say-it](#say-it)
+  - [Install](#install)
+  - [How to use](#how-to-use)
+  - [Language support limit](#language-support-limit)
+  - [Compatibility](#compatibility)
+  - [How to Add cmdmp3 into PATH (Only for windows user)](#how-to-add-cmdmp3-into-path-only-for-windows-user)
+  - [Updates](#updates)
+  - [License](#license)
+
+<!-- /TOC -->
+
 It just like the `say` command in Mac OSX, but born to be much powerful. We used [Baidu Yuyin](http://yuyin.baidu.com/) as the TTS engine. You need to have network access to use this tool. The pronunciation of Chinese is much better than English. Generally this could be a tool to help you to learn Chinese or English.
 
 ## Install
