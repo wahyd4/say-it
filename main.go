@@ -26,6 +26,7 @@ import (
 
 const (
 	MP3FileName        = "/tmp/say-it.mp3"
+	AudioFileFolder    = "/tmp"
 	WindowsMP3FileName = "\\say-it.mp3"
 )
 
@@ -145,6 +146,10 @@ Fetch:
 		log.Fatalf("Get voice failed, error code is: %d, error message is %s", errorResp.Code, errorResp.Message)
 	}
 
+	if err = os.MkdirAll(getAudioFolder(), os.ModePerm); err != nil {
+		log.Fatal("Can't create temporary folder:" + getAudioFolder())
+	}
+
 	out, err := os.Create(getAudioFilePath())
 	if err != nil {
 		log.Fatal("Create file failed:" + err.Error())
@@ -193,4 +198,11 @@ func getAudioFilePath() string {
 		return utils.HomeDir() + MP3FileName
 	}
 	return utils.HomeDir() + WindowsMP3FileName
+}
+
+func getAudioFolder() string {
+	if runtime.GOOS == "darwin" {
+		return utils.HomeDir() + AudioFileFolder
+	}
+	return utils.HomeDir()
 }
