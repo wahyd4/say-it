@@ -18,8 +18,9 @@ It just like the `say` command in Mac OSX, but born to be much powerful. We used
 ## Install
 1. The go way
 
-      go get -u github.com/wahyd4/say-it
-
+```bash
+    go get -u github.com/wahyd4/say-it
+```
 2. Or the standalone way, please go to releases page to download the binary application then execute it
 
 ## How to use
