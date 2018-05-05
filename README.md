@@ -16,7 +16,7 @@
 It just like the `say` command in Mac OSX, but born to be much powerful. We used [Baidu Yuyin](http://yuyin.baidu.com/) as the TTS engine. You need to have network access to use this tool. The pronunciation of Chinese is much better than English. Generally this could be a tool to help you to learn Chinese or English.
 
 ## Install
-1. The go way
+1. The go way (Recommend)
 
 ```bash
     go get -u github.com/wahyd4/say-it
